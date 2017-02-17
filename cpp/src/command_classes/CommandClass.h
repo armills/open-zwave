@@ -61,7 +61,7 @@ namespace OpenZWave
 		virtual void ReadXML( TiXmlElement const* _ccElement );
 		virtual void WriteXML( TiXmlElement* _ccElement );
 		virtual bool RequestState( uint32 const _requestFlags, uint8 const _instance, Driver::MsgQueue const _queue ){ return false; }
-		virtual bool RequestValue( uint32 const _requestFlags, uint8 const _index, uint8 const _instance, Driver::MsgQueue const _queue ) { return false; }
+		virtual bool RequestValue( uint32 const _requestFlags, uint16 const _index, uint8 const _instance, Driver::MsgQueue const _queue ) { return false; }
 
 		virtual uint8 const GetCommandClassId()const = 0;
 		virtual string const GetCommandClassName()const = 0;
@@ -83,8 +83,8 @@ namespace OpenZWave
 		uint8 GetNodeId()const{ return m_nodeId; }
 		Driver* GetDriver()const;
 		Node* GetNodeUnsafe()const;
-		Value* GetValue( uint8 const _instance, uint8 const _index );
-		bool RemoveValue( uint8 const _instance, uint8 const _index );
+		Value* GetValue( uint8 const _instance, uint16 const _index );
+		bool RemoveValue( uint8 const _instance, uint16 const _index );
 		uint8 GetEndPoint( uint8 const _instance )
 		{
 			map<uint8,uint8>::iterator it = m_endPointMap.find( _instance );
@@ -137,7 +137,7 @@ namespace OpenZWave
 			uint8 cc;
 			uint8 genre;
 			uint8 instance;
-			uint8 index;
+			uint16 index;
 			std::vector<RefreshValue *> RefreshClasses;
 		} RefreshValue;
 
