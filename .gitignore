@@ -39,3 +39,6 @@ OZWForm.vshost.exe.manifest
 .distfiles
 .idea/*
 ozw_config
+.project
+*~
+.idea/
